@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: local
+
+  ssl:
+    bundle:
+      jks:
+        emoji-api:
+          key:
+            alias: "wizzard"
+            password: "keyPass"
+          keystore:
+            location: "classpath:wizzard-key-store.p12"
+            password: "storePass"
+            type: "PKCS12"
+          truststore:
+            type: "JKS"
+            location: "classpath:emoji-api.truststore"
+            password: "password"
+
+server:
+  port: 8443
+  ssl:
+    bundle: "emoji-api"
+#    enabled-protocols: TLSv1.3
+    client-auth: none
+#    client-auth: need
